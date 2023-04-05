@@ -7,6 +7,7 @@
 #include "product_filter.h"
 #include "size_specification.h"
 #include "specification.h"
+#include "specification_builder.h"
 
 std::vector<Product> getProducts() {
     std::vector<Product> products;
@@ -23,14 +24,15 @@ std::vector<Product> getProducts() {
 
 int main()
 {
-    ColorSpecification colorSpec(Color::White);
-    BrandSpecification brandSpec(Brand::Sony);
-    SizeSpecification sizeSpec(Size::Medium);
+
+    Specification<Product> *colorSpec = SpecificationBuilder::make(Color::White);
+    Specification<Product> *brandSpec = SpecificationBuilder::make(Brand::Sony);
+    Specification<Product> *sizeSpec = SpecificationBuilder::make(Size::Medium);
 
     std::vector<Specification<Product>*> specs;
-    specs.push_back(&colorSpec);
-    specs.push_back(&brandSpec);
-    specs.push_back(&sizeSpec);
+    specs.push_back(colorSpec);
+    specs.push_back(brandSpec);
+    specs.push_back(sizeSpec);
 
     ProductFilter productFilter;
     auto products = getProducts();
