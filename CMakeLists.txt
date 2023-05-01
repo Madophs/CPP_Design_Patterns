@@ -6,4 +6,5 @@ project(DesignPatterns)
 set(EXPORT_COMPILE_COMMANDS ON)
 
 add_subdirectory(solid)
+add_subdirectory(builder)
 add_subdirectory(strategy)
